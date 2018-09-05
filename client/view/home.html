@@ -5,28 +5,33 @@
             <h2>Caboclos</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary" ng-click="addRodada()">Adiciona rodada</button>
-        </div>
-    </div>
     <div class="form-group">
         <div class="row">
             <div class="col">
                 <input class="form-control" type="text" ng-model="newCustomer" ng-keyup="$event.keyCode == 13 ? add(newCustomer) : null" autofocus>
             </div>
             <div class="col">
-                <button class="btn btn-primary" ng-click="add(newCustomer)">Add</button>
+                <button class="btn btn-primary" ng-click="add(newCustomer)">Adiciona caboclo</button>
             </div>
         </div>
         <br/>
         <div class="row">
             <div class="col">
-            <table>
+                <button class="btn btn-primary" ng-click="addRodada()">Adiciona rodada</button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col">
+            <table class="table">
                 <th>Rodadas</th>
-                <th ng-repeat="customer in customers">{{customer.customerName}}</th>
+                <th ng-repeat="customer in customers">
+                    <button ng-click="corre(customer)">Corre!</button>
+                    {{customer.name}}
+                </th>
                 <tr ng-repeat="rodada in rodadas">
-                    <td>{{rodada}}</td>
+                    <td>{{rodada.id}}</td>
+                    <td ng-repeat="cus in customers">{{rodada[cus.name].points}}</td>
                 </tr>
             </table>
             </div>
